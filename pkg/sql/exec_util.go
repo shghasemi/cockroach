@@ -2186,6 +2186,11 @@ type ExecutorTestingKnobs struct {
 	// occurs.
 	BeforeIndexSplitAndScatter func(splitPoints [][]byte)
 
+	// DisableBackfillerSplitSizeCheck, when true, bypasses the
+	// estimated-size check in MaybeSplitIndexSpans so that splits are
+	// always attempted regardless of table size.
+	DisableBackfillerSplitSizeCheck bool
+
 	// SessionWrapper, if set, wraps every isql.Session created by the
 	// internal executor. This can be used in tests to intercept session
 	// method calls like ExecutePrepared.
